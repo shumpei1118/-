@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伊豆大島デジタルノマドリトリート | 旅×リトリート</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            background-color: #fff;
+            line-height: 1.7;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu a {
+            margin-left: 30px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #E67E22;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: url('/api/placeholder/1500/800');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            color: #fff;
+            padding: 0 20px;
+            max-width: 800px;
+            margin-left: 10%;
+        }
+        
+        .hero-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #E67E22;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #D35400;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #E67E22;
+        }
+        
+        .section-subtitle {
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        /* Concept Section */
+        .concept-content {
+            font-size: 28px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        
+        .concept-detail {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .card-divider {
+            width: 30px;
+            height: 2px;
+            background-color: #E67E22;
+            margin: 10px 0 20px;
+        }
+        
+        /* Schedule */
+        .schedule {
+            margin-top: 20px;
+        }
+        
+        .day-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 50px 0 30px;
+        }
+        
+        .schedule-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .schedule-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .schedule-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .schedule-time {
+            font-weight: bold;
+            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 3px;
+        }
+        
+        .schedule-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        /* Timeline */
+        .timeline {
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .day-title {
+            text-align: center;
+            background: #f5f5f5;
+            padding: 15px 0;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+        
+        .timeline-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .timeline-row::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background-color: #ddd;
+            z-index: -1;
+        }
+        
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            width: 100px;
+        }
+        
+        .timeline-circle {
+            width: 100px;
+            height: 100px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-subtitle {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        /* Experience Section */
+        .experience-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .experience-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+        }
+        
+        /* Instructor Section */
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .instructor-card {
+            background: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .instructor-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .instructor-info {
+            padding: 20px;
+        }
+        
+        .instructor-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .instructor-title {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        .instructor-bio {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .instructor-social {
+            margin-top: 15px;
+        }
+        
+        .instructor-social a {
+            color: #E67E22;
+        }
+        
+        /* Flow Section */
+        .flow {
+            margin-top: 50px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .flow::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 60px;
+            right: 60px;
+            height: 2px;
+            background-color: #ddd;
+            z-index: -1;
+        }
+        
+        .flow-item {
+            text-align: center;
+            width: 120px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flow-circle {
+            width: 120px;
+            height: 120px;
+            background-color: #E67E22;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #fff;
+            font-size: 36px;
+        }
+        
+        .flow-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .flow-description {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            margin-top: 40px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-question {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #444;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #E67E22;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: none;
+        }
+        
+        /* Pricing Section */
+        .pricing-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #E67E22;
+            margin: 20px 0;
+        }
+        
+        .price-detail {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            color: #999;
+            margin-bottom: 30px;
+        }
+        
+        .price-includes {
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .price-includes li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .price-includes li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #E67E22;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        
+        .footer-nav {
+            margin-bottom: 30px;
+        }
+        
+        .footer-nav a {
+            margin-right: 20px;
+            font-size: 14px;
+            color: #ddd;
+            transition: color 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: #E67E22;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #777;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .cta-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-menu {
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu a {
+                margin: 5px 20px 5px 0;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .timeline-row {
+                flex-wrap: wrap;
+            }
+            
+            .timeline-item {
+                width: 50%;
+                margin-bottom: 30px;
+            }
+            
+            .experience-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .flow::after {
+                display: none;
+            }
+            
+            .flow-item {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">伊豆大島デジタルノマドリトリート</a>
+            <nav class="nav-menu">
+                <a href="#concept">リトリートとは</a>
+                <a href="#schedule">スケジュール</a>
+                <a href="#experience">体験できること</a>
+                <a href="#pricing">料金</a>
+                <a href="#flow">参加までの流れ</a>
+                <a href="#faq">よくある質問</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">新たな自分に出会う。<br>旅×リトリート体験。</h1>
+            <p class="hero-subtitle">旅の終わりに待っているのは新しい自分と次の出会い</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJx-OGd4mo50QMyQZXorcENR6YRa2Y-nsUDaWm09P6ycfP6g/viewform?usp=sf_link" class="btn-primary">今すぐ申し込む</a>
+        </div>
+    </section>
+
+    <section id="concept" class="section">
+        <div class="container">
+            <h2 class="section-title">人生を遊ぼう。
+                <span class="section-subtitle">CONCEPT</span>
+            </h2>
+            
+            <p class="concept-content">自分と向き合う時間を作る。</p>
+            
+            <p class="concept-detail">今の情報の多い時代で何か疑問を持っている人。<br>
+            人と会うのが価値。色々な人に会える。新しいことに触れる。<br>
+            新しいことって自分の可能性広がるやん。自分の成長を感じる3日間。</p>
+            
+            <p class="concept-detail">夢中になれることに、心身をすり減らすような「がんばり」は必要ありません。<br>
+            夢中なら人は自然と学び、スキルは必然的に身に付きます。</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="card-title">新しい人と新しい場所で出会う</h3>
+                    <div class="card-divider"></div>
+                    <p>デジタルノマドリトリートに参加することで、場所に縛られない働き方と生活スタイルを体験できます。伊豆大島で非日常の環境に身を置きながら、新しい可能性を発見しましょう。</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">新たな自分と出会う体験</h3>
+                    <div class="card-divider"></div>
+                    <p>様々なバックグラウンドを持つ参加者との交流を通じて、新たな視点や気づきを得ることができます。自分の可能性を広げるきっかけとなるでしょう。</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">主催者・講師は現役のデジタルノマド</h3>
+                    <div class="card-divider"></div>
+                    <p>リトリートの運営メンバーは全員がデジタルノマドワーカー。実体験に基づいたリアルなサポートが強みです。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="schedule" class="section" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">3日間の充実したプログラム
+                <span class="section-subtitle">SCHEDULE</span>
+            </h2>
+            
+            <div class="schedule">
+                <div class="day-header">1日目</div>
+                
+                <div class="schedule-item">
+                    <img src="/api/placeholder/1200/600" alt="ゆったり出発" class="schedule-image">
+                    <div class="schedule-overlay">
+                        <div class="schedule-time">2:00 PM</div>
+                        <div class="schedule-title">ゆったり出発</div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <img src="/api/placeholder/1200/600" alt="チェックイン" class="schedule-image">
+                    <div class="schedule-overlay">
+                        <div class="schedule-time">3:00 PM</div>
+                        <div class="schedule-title">チェックイン</div>
+                    </div>
+                </div>
+                
+                <div class="day-header">2日目</div>
+                
+                <div class="schedule-item">
+                    <img src="/api/placeholder/1200/600" alt="朝からカヌイチ開始！" class="schedule-image">
+                    <div class="schedule-overlay">
+                        <div class="schedule-time">6:00 AM</div>
+                        <div class="schedule-title">朝からカヌイチ開始！</div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <img src="/api/placeholder/1200/600" alt="ショートカット？" class="schedule-image">
+                    <div class="schedule-overlay">
+                        <div class="schedule-time">8:00 AM</div>
+                        <div class="schedule-title">ショートカット？</div>
+                    </div>
+                </div>
+                
+                <div class="day-header">3日目</div>
+                
+                <div class="schedule-item">
+                    <img src="/api/placeholder/1200/600" alt="ゆったりモーニング" class="schedule-image">
+                    <div class="schedule-overlay">
+                        <div class="schedule-time">9:00 AM</div>
+                        <div class="schedule-title">ゆったりモーニング</div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <img src="/api/placeholder/1200/600" alt="カジュアルライドの準備" class="schedule-image">
+                    <div class="schedule-overlay">
+                        <div class="schedule-time">10:00 AM</div>
+                        <div class="schedule-title">カジュアルライドの準備</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="day-title">全体スケジュール</div>
+                
+                <div class="timeline-row">
+                    <div class="timeline-item">
+                        <div class="timeline-circle">1日目</div>
+                        <div class="timeline-title">8:30</div>
+                        <div class="timeline-subtitle">熱海港集合</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-circle">1日目</div>
+                        <div class="timeline-title">10:00</div>
+                        <div class="timeline-subtitle">大島到着</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-circle">1日目</div>
+                        <div class="timeline-title">13:30</div>
+                        <div class="timeline-subtitle">AI制作体験</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-circle">1日目</div>
+                        <div class="timeline-title">19:00</div>
+                        <div class="timeline-subtitle">夕食・交流会</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-row">
+                    <div class="timeline-item">
+                        <div class="timeline-circle">2日目</div>
+                        <div class="timeline-title">6:30</div>
+                        <div class="timeline-subtitle">朝活</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-circle">2日目</div>
+                        <div class="timeline-title">9:00</div>
+                        <div class="timeline-subtitle">三原山ハイキング</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-circle">2日目</div>
+                        <div class="timeline-title">13:00</div>
+                        <div class="timeline-subtitle">ワークショップ</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-circle">2日目</div>
+                        <div class="timeline-title">18:00</div>
+                        <div class="timeline-subtitle">BBQ</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-row">
+                    <div class="timeline-item">
+                        <div class="timeline-circle">3日目</div>
+                        <div class="timeline-title">7:30</div>
+                        <div class="timeline-subtitle">朝食</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-circle">3日目</div>
+                        <div class="timeline-title">9:00</div>
+                        <div class="timeline-subtitle">目標設定</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-circle">3日目</div>
+                        <div class="timeline-title">13:00</div>
+                        <div class="timeline-subtitle">自由時間</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-circle">3日目</div>
+                        <div class="timeline-title">16:00</div>
+                        <div class="timeline-subtitle">大島出発</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">体験できること
+                <span class="section-subtitle">WHAT YOU CAN EXPERIENCE</span>
+            </h2>
+            
+            <p>デジタルノマドリトリートでは、以下のような様々な体験が可能です：</p>
+            
+            <div class="experience-images">
+                <div class="experience-image" style="background-image: url('/api/placeholder/500/300')"></div>
+                <div class="experience-image" style="background-image: url('/api/placeholder/500/300')"></div>
+                <div class="experience-image" style="background-image: url('/api/placeholder/500/300')"></div>
+            </div>
+            
+            <div class="card-grid" style="margin-top: 60px;">
+                <div class="card">
+                    <h3 class="card-title">デジタルノマド体験</h3>
+                    <div class="card-divider"></div>
+                    <p>場所に縛られない働き方を実現するための具体的なスキルや考え方を学びます。</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">最新技術体験</h3>
+                    <div class="card-divider"></div>
+                    <p>AIツールやドローンなど、最新のデジタル技術を実際に触って体験できます。</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">自然体験</h3>
+                    <div class="card-divider"></div>
+                    <p>三原山ハイキングなど、伊豆大島の自然を満喫するアクティビティに参加できます。</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">コミュニティ体験</h3>
+                    <div class="card-divider"></div>
+                    <p>様々なバックグラウンドを持つ参加者と交流し、新たな人脈を築くことができます。</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">セルフリフレクション</h3>
+                    <div class="card-divider"></div>
+                    <p>自分自身と向き合い、将来の目標や可能性について考える時間を持てます。</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">ワークライフバランス</h3>
+                    <div class="card-divider"></div>
+                    <p>仕事と生活の新しいバランスのあり方について、実体験を通して学べます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="instructors" class="section" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">講師紹介
+                <span class="section-subtitle">INSTRUCTORS</span>
+            </h2>
+            
+            <p>デジタルノマドリトリートをサポートする講師陣は、全員が現役のデジタルノマドとして活躍しています。</p>
+            
+            <div class="instructor-grid">
+                <div class="instructor-card">
+                    <div class="instructor-image" style="background-image: url('/api/placeholder/400/500')">
+                        <!-- 注: 実際の実装時には、ここに河合舜平さんの写真を使用します -->
+                    </div>
+                    <div class="instructor-info">
+                        <div class="instructor-name">河合 舜平</div>
+                        <div class="instructor-title">合同会社KALEIDO 代表</div>
+                        <div class="instructor-bio">
+                            高校卒業後、地元の工場に就職後、会社を辞め自転車で日本一周の旅に出る。旅と同時に始めたカメラに魅了され独学で映像を学び10ヶ月で日本国際観光映像祭優秀賞受賞。現在は世界を旅するクリエイターとしてSNSで活動し合同会社KALEIDOでは「旅をきっかけに人生をクリエイティブに」を理念に掲げて観光業を中心とした映像×SNSマーケティングを使った広告事業を展開
+                        </div>
+                        <div class="instructor-social">
+                            <a href="https://www.instagram.com/_shunpei_1118/?hl=ja" target="_blank">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="pricing" class="section">
+        <div class="container">
+            <h2 class="section-title">参加費用
+                <span class="section-subtitle">PRICING</span>
+            </h2>
+            
+            <div class="pricing-card">
+                <h3>デジタルノマドリトリート参加費</h3>
+                <div class="price">¥79,800</div>
+                <div class="price-detail">税込・1名様</div>
+                <div class="price-original">通常価格 ¥99,000</div>
+                <p>24日までのお申し込み限定特別価格<br>定員10名（埋まり次第終了）</p>
+                
+                <div class="price-includes">
+                    <h4>料金に含まれるもの：</h4>
+                    <ul>
+                        <li>熱海-大島間の往復船便</li>
+                        <li>宿泊費（2泊）</li>
+                        <li>全食事（1日目昼食〜3日目昼食）</li>
+                        <li>アクティビティ費用</li>
+                        <li>ワークショップ参加費</li>
+                        <li>デジタルノマド講師による指導</li>
+                    </ul>
+                </div>
+                
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJx-OGd4mo50QMyQZXorcENR6YRa2Y-nsUDaWm09P6ycfP6g/viewform?usp=sf_link" class="btn-primary">今すぐ申し込む</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="flow" class="section" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">参加までの流れ
+                <span class="section-subtitle">FLOW</span>
+            </h2>
+            
+            <div class="flow">
+                <div class="flow-item">
+                    <div class="flow-circle">
+                        <i>1</i>
+                    </div>
+                    <div class="flow-title">お申し込み</div>
+                    <div class="flow-description">フォームから申し込み</div>
+                </div>
+                
+                <div class="flow-item">
+                    <div class="flow-circle">
+                        <i>2</i>
+                    </div>
+                    <div class="flow-title">お支払い</div>
+                    <div class="flow-description">参加費のお支払い</div>
+                </div>
+                
+                <div class="flow-item">
+                    <div class="flow-circle">
+                        <i>3</i>
+                    </div>
+                    <div class="flow-title">事前ガイダンス</div>
+                    <div class="flow-description">オンラインでの事前説明会</div>
+                </div>
+                
+                <div class="flow-item">
+                    <div class="flow-circle">
+                        <i>4</i>
+                    </div>
+                    <div class="flow-title">参加</div>
+                    <div class="flow-description">当日集合して参加</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="faq" class="section">
+        <div class="container">
+            <h2 class="section-title">よくある質問
+                <span class="section-subtitle">FAQ</span>
+            </h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">一人での参加でも大丈夫ですか？</div>
+                    <div class="faq-answer">
+                        はい、一人での参加も大歓迎です。実際に参加者の多くは一人で参加されています。グループワークなどを通じて自然と交流が生まれる環境を作っていますので、ご安心ください。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">パソコンのスキルがあまりないのですが参加できますか？</div>
+                    <div class="faq-answer">
+                        はい、初心者の方でも参加可能です。基本的なパソコン操作（インターネット閲覧、文字入力など）ができれば問題ありません。ワークショップではスタッフがサポートいたします。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">持ち物は何が必要ですか？</div>
+                    <div class="faq-answer">
+                        ノートパソコン、動きやすい服装、防寒着、雨具、水筒などをご持参ください。詳細な持ち物リストはお申し込み後にお送りします。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">天候不良の場合はどうなりますか？</div>
+                    <div class="faq-answer">
+                        荒天により船が欠航となる場合は、日程変更または全額返金の対応をいたします。島内での活動については、天候に応じて代替プログラムをご用意しています。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="apply" class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">踏み出せない人生に終止符を。</h2>
+            <p class="cta-subtitle">BRING AN END, FOR A LIFE CAN'T TAKE A STEP.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJx-OGd4mo50QMyQZXorcENR6YRa2Y-nsUDaWm09P6ycfP6g/viewform?usp=sf_link" class="btn-primary">今すぐ申し込む</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-logo">伊豆大島デジタルノマドリトリート</a>
+            
+            <div class="footer-nav">
+                <a href="#concept">リトリートとは</a>
+                <a href="#schedule">スケジュール</a>
+                <a href="#experience">体験できること</a>
+                <a href="#pricing">料金</a>
+                <a href="#flow">参加までの流れ</a>
+                <a href="#faq">よくある質問</a>
+            </div>
+            
+            <p>お問い合わせ：info@example.com<br>
+            TEL: 03-XXXX-XXXX（平日10:00-18:00）</p>
+            
+            <p class="copyright">© 2025 デジタルノマドジャパン株式会社 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    document.querySelectorAll('.faq-answer').forEach(item => {
+                        item.style.display = 'none';
+                    });
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
